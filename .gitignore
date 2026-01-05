@@ -1,0 +1,61 @@
+# --- Kompilaty Pythona ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Środowiska wirtualne (Virtual Environments) ---
+.venv/
+venv/
+ENV/
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Zmienne środowiskowe i sekrety ---
+.env
+.venv
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Testy i pokrycie kodu (Coverage) ---
+htmlcov/
+.tox/
+.nosetests.config
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints
+
+# --- Biblioteki zewnętrzne / Lokalne bazy danych ---
+*.db
+*.sqlite3
+
+# --- Edytory i systemowe ---
+.vscode/
+.idea/
+.DS_Store
+*.swp
