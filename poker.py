@@ -143,9 +143,13 @@ def evaluate_hand(hand):
     return 1 
 
 def determine_winner(users_cards):
-    scores = {}
-    for player_name, deck in users_cards.items():
-        scores[player_name] = evaluate_hand(deck)
+    
+    # scores = {}
+    # for player_name, deck in users_cards.items():
+    #     scores[player_name] = evaluate_hand(deck)
+    
+    scores = {player_name: evaluate_hand(deck) for player_name, deck in users_cards.items()}
+
 
     player1_name, player2_name = list(scores.keys())
     score1, score2 = scores[player1_name], scores[player2_name]
