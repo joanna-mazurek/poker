@@ -160,6 +160,27 @@ def determine_winner(users_cards):
         return f"Wygrał: {player2_name}"
     else:
         return "Remis"
+    
+def exchange_cards(hand, deck):
+    print("Twoje karty:")
+    for indeks in range(len(hand)):
+        print(indeks, ":", hand[indeks])
+
+    indeks_input = input("Podaj indeks kart do wymiany: ")
+
+    if indeks_input == "":
+        return hand
+    
+    indeks_input = indeks_input.split()
+
+    for indeks in sorted(indeks_input, reverse=True):
+        hand.pop(int(indeks))
+
+    for _ in range(len(indeks_input)):
+        hand.append(deck.pop(0))
+
+    return hand
+
 
 def main():
     deck = prepare_deck()
@@ -173,6 +194,16 @@ def main():
     print(users_cards)
     #cards_hand = deal_hands(deck)
     #cards_hand = [['J', 'Hearts'], ['Q', 'Hearts'], ['K', 'Hearts'], ['A', 'Hearts'], ['10', 'Hearts']]
+
+    users_cards["Gracz_1"] = exchange_cards(
+        users_cards["Gracz_1"],
+        deck,
+    )
+
+    users_cards["Gracz_2"] = exchange_cards(
+        users_cards["Gracz_2"],
+        deck,
+    )
 
     for players, cards_hand in users_cards.items():
         
