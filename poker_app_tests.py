@@ -60,3 +60,9 @@ def test_is_royal_flush():
     hand = [['10', 'Hearts'], ['J', 'Hearts'], ['Q', 'Hearts'], ['K', 'Hearts'], ['A', 'Hearts']]
     result = poker.is_royal_flush(hand)
     assert result is True
+
+def test_evaluate_hand():
+    hand = [['10', 'Hearts'], ['J', 'Hearts'], ['Q', 'Hearts'], ['K', 'Hearts'], ['A', 'Hearts']]
+    result = poker.evaluate_hand(hand)
+    assert result == [10]
+
