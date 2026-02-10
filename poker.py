@@ -142,17 +142,44 @@ def evaluate_hand(hand):
     if is_pair(hand): return 2
     return 1 
 
+def straight_hand_card(values):
+    values = sorted(values)
+    if values == [2, 3, 4, 5, 14]:
+        return 5
+    return max(values)
+
+def hand_rank(hand):
+    values = mapped_hand_figures(hand)
+
+    groups = [(values.count(v), v) for v in set(values)]
+
+    groups.sort(reverse=True)
+
+    if is_strit(hand):
+        return(evaluate_hand(hand),[straight_hand_card(values)])
+    
+    kickers = []
+    for count, value in groups:
+        kickers.extend([value] * count)
+
+    return (evaluate_hand(hand), kickers)
+
 def determine_winner(users_cards):
     
     # scores = {}
     # for player_name, deck in users_cards.items():
     #     scores[player_name] = evaluate_hand(deck)
     
-    scores = {player_name: evaluate_hand(deck) for player_name, deck in users_cards.items()}
+    #scores = {player_name: evaluate_hand(deck) for player_name, deck in users_cards.items()}
 
 
-    player1_name, player2_name = list(scores.keys())
-    score1, score2 = scores[player1_name], scores[player2_name]
+    #player1_name, player2_name = list(scores.keys())
+    #score1, score2 = scores[player1_name], scores[player2_name]
+
+    player1_name, player2_name = users_cards.keys()
+
+    score1 = hand_rank(users_cards[player1_name])
+    score2 = hand_rank(users_cards[player2_name])
 
     if score1 > score2:
         return f"Wygrał: {player1_name}"
